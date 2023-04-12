@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<int> nextGreaterElements(vector<int>& nums) 
+    {
+        vector<int> vec;
+        for(int i=0;i<nums.size();i++)
+        {
+            bool flag = false;
+            int k = i+1;
+            int index = INT_MIN;
+
+            while(index != i)
+            {
+                index = k % nums.size();
+                if(nums[index] > nums[i])
+                {
+                    flag = true;
+                    vec.push_back(nums[index]);
+                    break;
+                }
+                k++;
+            }
+            if(!flag)
+            {
+                vec.push_back(-1);
+            }
+        }
+        return vec;
+    }
+};
